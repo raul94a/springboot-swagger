@@ -5,6 +5,8 @@ import com.raul.demoopenapi.users.models.CreateUserBody;
 import com.raul.demoopenapi.users.persistence.User;
 import com.raul.demoopenapi.users.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,8 +23,8 @@ public class UserController implements IUserController {
     }
 
     @Override
-    public List<User> getUsers() {
-        return service.getAllUsers();
+    public Page<User> getUsers(Pageable pageable) {
+        return service.getAllUsers(pageable);
     }
 
     @Override

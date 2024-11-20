@@ -4,8 +4,9 @@ import com.raul.demoopenapi.exceptions.NotFoundException;
 import com.raul.demoopenapi.users.persistence.User;
 import com.raul.demoopenapi.users.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,10 @@ public class UserService implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public List<User> getAllUsers() {
-        List<User> result = new ArrayList<User>();
-        userRepository.findAll().forEach(result::add);
-        return result;
+    public Page<User> getAllUsers(Pageable pageable) {
+
+       return userRepository.findAll(pageable);
+
     }
     @Override
     public User getUserById(Long id) throws NotFoundException {

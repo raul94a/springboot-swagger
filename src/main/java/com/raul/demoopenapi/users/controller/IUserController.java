@@ -8,6 +8,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +25,7 @@ public interface IUserController {
                     schema = @Schema(implementation = User.class))
     })
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    List<User> getUsers();
+    Page<User> getUsers(Pageable pageable);
 
     @Operation(summary = "MyDescription for this api, it can be stored in the application.yml resource file",
             description = "Detailed description for this Endpoint"
