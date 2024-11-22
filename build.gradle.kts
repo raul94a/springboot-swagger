@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.raul"
-version = "1.0.0-SNAPSHOT"
+version = ""
 
 java {
 	toolchain {

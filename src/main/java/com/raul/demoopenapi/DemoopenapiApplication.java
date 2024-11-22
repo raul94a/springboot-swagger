@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.ForwardedHeaderFilter;
 
 @SpringBootApplication
 @Configuration
@@ -17,6 +18,10 @@ public class DemoopenapiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoopenapiApplication.class, args);
+    }
+    @Bean
+    ForwardedHeaderFilter forwardedHeaderFilter() {
+        return new ForwardedHeaderFilter();
     }
 
     @Value("${spring.api.common.version}")
